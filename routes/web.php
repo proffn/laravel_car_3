@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CarController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,4 +16,16 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::get('/', function () {
+    return view('cars.index');
+})->name('cars.index');
+
+// Маршруты для CRUD операций (создадим позже)
+Route::resource('cars', CarController::class)->except(['index']);
+
+// Для проверки - тестовый маршрут
+Route::get('/test', function () {
+    return view('cars.index');
 });
